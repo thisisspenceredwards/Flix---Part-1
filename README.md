@@ -12,7 +12,7 @@
 
 
 
-<img src="https://recordit.co/MQd8lQM01z" width=250><br>
+<img src="http://g.recordit.co/MQd8lQM01z.gif" width=250><br>
 
 ### Notes
 Describe any challenges encountered while building the app.
