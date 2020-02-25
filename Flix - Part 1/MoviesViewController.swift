@@ -26,7 +26,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
               print(error.localizedDescription)
            } else if let data = data {
               let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-            print(dataDictionary)
+            //print(dataDictionary)
             self.movies = dataDictionary["results"] as! [[String:Any]]
             self.tableView.reloadData()
               // TODO: Get the array of movies
@@ -58,4 +58,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             cell.posterView.af_setImage(withURL: posterUrl)
             return cell
       }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        //print("Loading up details")
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for:cell)!
+        let movie = movies[indexPath.row]
+        let detailsViewController = segue.destination as! MovieDetailsViewController
+        detailsViewController.movie = movie
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
 }
